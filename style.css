@@ -1,0 +1,736 @@
+/* =========================================
+   1. GLOBAL RESET & BODY STYLES
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;                       /* makes everything default positioning */
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    /* Base font settings */
+    font-family: "Poppins", "Inter", "Jost", sans-serif;  /* sets font */
+    width: 100%; /* allows  width of the body to take up 100% of website width*/
+    min-height: 100vh; /*webpage body will always take up at least the full height of the user's device*/
+    
+    
+    /* Prevents horizontal scroll but allows vertical scroll */
+    overflow-x: clip; 
+    max-width: 100vw; /*ensures the body never exceeds the width of the screen*/
+}
+
+/* Page Specific Backgrounds */
+.page1-bg {
+    background-image: url('Photos/main\ page\ bg.jpg');
+    background-size: cover; /*covers the viewing area of website allocated to the class*/
+    background-position: center; 
+    background-attachment: fixed; /*makes the bg not move, just stays in the back even when scrolling*/
+    font-family: Arial, sans-serif;
+}
+
+.page2-bg {
+    background-image: url('Photos/purplebg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: "Poppins", sans-serif;
+}
+
+.pagedesign { /* Page 3 */
+    font-family: 'Inter', sans-serif;
+    background-image: url('Photos/bg3.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+/* Page 4 Background */
+body:has(.stage) { 
+   
+    background: #1e0b36; 
+    color: #e6eef8;
+}
+
+/* =========================================
+   2. GLOBAL HEADER (TOPBAR)
+   ========================================= */
+.topbar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* creates 3 columns, left right and center */
+    align-items: center; /* centralizes the 3 elelents in their individual grid*/
+    padding: 10px 20px; /* content is 10px away from top bar, 20 px away from left and right portions*/
+    width: 100%; /* topbar covers 100% width of the page*/
+    background: rgba(120, 0, 255, 0.15);
+    backdrop-filter: blur(5px); /* Adds the blur effect to all pages */
+    
+    /* STICKY CONFIGURATION */
+    position: sticky; /* topbar sticks to top of viewing even when scrolling*/
+    top: 0;
+    z-index: 1000; /* ensures it stays on top of everything */
+}
+
+/* Logo (Left Column) */
+.logo {
+    height: 30px;
+    width: auto;
+    grid-column: 1 / 2; /* images/text in grid starts from the first and end before second, vice versa */
+}
+
+/* Headline (Center Column) */
+.headline {
+    margin: 0 auto;
+    text-align: center; /* Aligns text to center of page */
+    font-size: 36px;
+    font-family: "Jost", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 2px;
+    color: rgb(255, 154, 255);
+}
+
+/* Dropdown Area (Right Column) */
+.dropdown-container {
+    justify-self: end; /* moves the dropdown bar area all the way to the right */
+    grid-column: 3 / 4; 
+}
+
+.dropdown {
+    position: relative;  /* allows the position of the dropdown menu to be moved, and allows the dropdown box to open based on where the menu is */
+    display: inline-block;
+}
+
+.scissor {
+    height: 60px;
+    width: auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Dropdown Menu Logic */
+.dropdown-content {
+    position: absolute; /* always appears under where the logo is when pressed */
+    right: 0;        
+    top: 100%;       
+    background: rgba(40, 0, 80, 0.95);
+    border-radius: 10px; /* makes the box slightly curved */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    min-width: 140px;
+    z-index: 9999; /* always appears on top */
+    display: none; /* doesnt display unless hovered on */
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    display: block; 
+    padding: 12px 15px;
+    text-decoration: none;
+    color: rgb(244, 164, 255);
+    font-family: "Jost", sans-serif;
+    transition: background 0.2s;
+}
+
+.dropdown-content a:hover {
+    background: rgba(255, 154, 255, 0.2);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* appears upon hover */
+}
+
+.dropdown:hover .scissor {
+    content: url('Dropdown.png');    
+}
+
+/* HEADER RESPONSIVENESS */
+@media (max-width: 768px) {
+    .topbar {
+        grid-template-columns: 0.2fr 1fr 0.2fr;
+        padding: 8px 10px;
+    }                                                      /* changes positioning when device max width is 768px (mobile) */
+    .headline { font-size: 20px; }
+    .logo { height: 20px; }
+    .scissor { height: 35px; }
+    .dropdown-content { min-width: 120px; }
+}
+
+/* =========================================
+   3. RAIN ANIMATION (Global)
+   ========================================= */
+#rain-container {
+    position: fixed; 
+    inset: 0; 
+    pointer-events: none; 
+    z-index: 0;
+}
+  
+.drop {
+    position: absolute; 
+    top: -20px; 
+    left: 0;
+    width: 2px; 
+    height: 20px;
+    background: linear-gradient(to bottom, transparent, rgba(114, 206, 255, 0.7)); 
+    animation: fall linear infinite;
+    opacity: 0.6;
+}
+  
+@keyframes fall {
+    to { transform: translateY(110vh); }
+}
+
+/* =========================================
+   4. PAGE 1: TRACKLISTS
+   ========================================= */
+.double-tracklist-section {
+    text-align: center; /* helps to center the two tracklists in the middle of the page */
+    margin-top: 40px; /* gap from top of headbar */
+}
+
+.tracklist-title {
+    font-size: 32px;
+    font-family: "Jost", sans-serif;
+    font-weight: 700;
+    border-bottom: 2px solid rgb(124, 31, 255);
+    padding-bottom: 8px;                            /* provide space above the tracklist class */
+    margin-bottom: 25px;
+    display: inline-block;
+    color: rgb(124, 31, 255);
+}
+
+.tracklist-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    background-color: rgba(128, 0, 255, 0.3);
+    border-radius: 20px;                            /* helps to center the trackist in the middle */
+    border: 2px solid rgba(128, 0, 128, 0.1); /* translucent border around the tracklist */
+    padding: 30px; 
+    max-width: fit-content; /* width is only as big as the content takes */
+    margin: 0 auto;
+}
+
+.tracklist-table {
+    border-collapse: collapse;     /* adjacent cell borders are merged into a single border*/
+    width: 260px; /* set max width of table */
+    margin: 0 auto;
+    color: rgb(244, 164, 255);
+}
+
+.tracklist-table th,
+.tracklist-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4); /*a soft row separator*/
+}
+
+.tracklist-table th { font-size: 20px; }
+.tracklist-table td { font-size: 18px; }
+
+.track-cover {
+    height: 2.0em;
+    width: auto;
+    vertical-align: middle;
+}
+
+.tracklist-table tbody td:nth-child(2) {
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.1em;
+    color: rgb(124, 31, 255);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #a200ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 30px 0;
+}
+.btn:hover { background-color: #ff7bf8; } 
+
+@media (max-width: 768px) {
+    .tracklist-wrapper {
+        flex-direction: column;     /*switches the Flexbox orientation so the two tracklists are stacked vertically, one above the other, instead of side-by-side*/
+        align-items: center;
+        gap: 20px;
+    }
+    .tracklist-table { width: 90%; table-layout: fixed; }
+    
+    .tracklist-table th:nth-child(1), .tracklist-table td:nth-child(1) { width: 15%; text-align: center; }
+    .tracklist-table th:nth-child(2), .tracklist-table td:nth-child(2) { width: 55%; }
+    .tracklist-table th:nth-child(3), .tracklist-table td:nth-child(3) { width: 30%; text-align: center; }
+    
+    .tracklist-wrapper table:nth-of-type(2) thead { display: none; } /*Hides the header row (<thead>) of the second table within the wrapper*/
+    .double-tracklist-section { padding: 0 20px; }
+}
+
+/* =========================================
+   5. PAGE 2: ABOUT / CAROUSEL
+   ========================================= */
+/* Hero */
+.hero {
+    width: 100%;
+    height: 50vh; /* cover 50% of viewport height */
+    overflow: hidden; /* hide any content exceeding 50vh */
+    position: relative; 
+}
+.hero img {
+    width: 100%;    /* takes up whole space provided to .hero */
+    height: 100%;
+    object-fit: cover; /* help to scale, crop image while preserving aspect ratio */
+    object-position: center top; /* position the image */
+}
+
+/* Intro Box */
+.introtop {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between; /* consistent spacing */
+    align-items: center;
+    width: 90%;
+    max-width: 1100px;
+    margin: 50px auto; /* auto helps to center the left and right margin */
+    padding: 50px; /* space between the box and content */
+    background-color: rgba(35, 10, 60, 0.85);
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    position: relative; 
+    z-index: 2;
+}
+
+.intro-text { flex: 1; padding-right: 60px; }
+.intro-text h1 {
+    color: rgb(255, 154, 255);
+    font-size: 2.2em;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    border-bottom: 4px solid rgb(255, 154, 255);
+    display: inline-block;
+    padding-bottom: 10px;
+}
+.intro-text p { color: #ffffff; line-height: 1.8; font-weight: 300; }
+.intro-text p b { font-weight: 600; color: rgb(255, 180, 255); }
+
+.intro-image { flex: 0 0 auto; }
+.intro-image img {
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    object-fit: contain; /* maintain the picture aspect ratio */
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+}
+
+/* Best Songs / Albums */
+.bestsong {
+    border-bottom: 5px solid rgb(255, 154, 255);
+    padding-bottom: 10px;
+    width: 50%;
+    color: rgb(255, 154, 255);
+    text-align: center;
+    font-size: 1.8em;                                          /* formatting the text on top of the albums and discs */
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    margin: 30px auto 10px auto;
+    display: block;
+}
+
+.albums-wrapper {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid #ff9aff;
+    border-radius: 15px;                /* translucent box behind the two discs */
+    padding: 80px 30px;
+    margin: 40px auto;
+    width: 95%;
+    max-width: 1200px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.discontainer {
+    display: flex;
+    justify-content: space-around; /* equal space between before and after the discs */
+    align-items: center;         /* align the two discs */
+    flex-wrap: wrap; /*automatically wrap onto the next line instead of overflowing or shrinking too much*/
+    gap: 50px; 
+}
+
+.album {
+    position: relative;
+    width: 250px; height: 250px;
+    margin-bottom: 40px;
+    cursor: pointer;
+}
+
+.album-text {
+    color: #ff9aff;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    width: 300px;
+    pointer-events: none;
+}
+.album .top-text { position: absolute; top: -40px; left: 50%; transform: translateX(-50%); white-space: nowrap;} /* centralizing and spacing the text below and on top of the graphics */
+.album .bottom-text { position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); }
+
+.album .card {
+    height: 250px; width: 250px;
+    background-color: #a200ff;
+    overflow: hidden; 
+    z-index: 10;
+    position: relative;
+    border-radius: 5px;
+}
+.album .card img { width: 100%; height: 100%; object-fit: cover; } /* uses the full space of .card to display the image */
+
+.album .outer {
+    position: absolute;
+    top: 5px; left: 5px;
+    height: 240px; width: 240px;
+    background: repeating-radial-gradient(#111 0, #111 2px, #333 3px, #333 4px);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transition: left 0.5s ease-in-out;
+    animation: spin 3s linear infinite;
+}
+.album .inner { height: 90px; width: 90px; border-radius: 50%; overflow: hidden; }
+.album .inner img { width: 100%; height: 100%; object-fit: cover; }                             /* rotation of the discs upon hover */
+.album:hover .outer { left: 110px; } 
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } } 
+
+/* Footer / Carousel */
+footer {
+    display: block; 
+    text-align: center;
+    padding: 20px 0;        /* centralizing and positioning footer content (text and carousel) */
+    margin-bottom: 50px;
+}
+
+.ytrefer {
+    color: rgb(255, 154, 255);
+    font-size: 1.8em;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.carousel-container {
+    position: relative;
+    width: 90%;
+    max-width: 800px;       /* defines the total space the carousel takes */
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 2px solid #a200ff;
+}
+
+.carousel-track-container { width: 100%; }
+.carousel-track {
+    display: flex; /* arrange video hoprizontally */
+    padding: 0; margin: 0; /* video takes up full area  */
+    list-style: none;
+    transition: transform 0.4s ease-in-out; /* smooth movement animation */
+}
+
+.carousel-slide {
+    min-width: 100%;
+    width: 100%;
+    flex-shrink: 0; /* Ensures slides don't squish */
+    background-color: #000;
+}
+
+.video-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; } /* achieve a 16:9 aspect ratio */
+.video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(162, 0, 255, 0.7);
+    color: white;                           /* create button to switch videos left and right */
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+.carousel-btn:hover { background: #ff7bf8; }
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+
+.carousel-nav {
+    display: flex;
+    justify-content: center; /* puts the 5 dots at the bottom of the carousel container and centralizes it */
+    padding: 15px 0;
+    background-color: rgba(40, 0, 80, 0.9);
+}                                                                                                                       /* define how the buttons loook like when hovering over them and when t is on current page */
+.carousel-indicator {
+    border: 0; border-radius: 50%; width: 12px; height: 12px; background-color: #888; margin: 0 8px; cursor: pointer;
+}
+.carousel-indicator.current-slide { background-color: #ff7bf8; transform: scale(1.3); }
+
+/* Page 2 Mobile */
+@media (max-width: 768px) {
+    .introtop { flex-direction: column; text-align: center; padding: 40px 25px; }   /* vertically stacks the introtop instead of horizontal */
+    .intro-text { padding-right: 0; margin-bottom: 40px; }
+    .intro-image img { width: 180px; height: 180px; }
+
+    .discontainer { flex-direction: column; gap: 100px; } /* increase space for the discs to stack vertically  */
+    .albums-wrapper { padding: 60px 10px; width: 90%; }
+    .bestsong { width: 90%; font-size: 1.5em; }
+
+    .prev-btn, .next-btn { display: none; } /* Hide arrows on mobile, rely on swipe/dots */
+}
+
+/* =========================================
+   6. PAGE 3: MERCHANDISE
+   ========================================= */
+.topwrap {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+.featured, .find {
+    color: rgb(255, 154, 255);
+    font-family: "Jost", sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    letter-spacing: 2px;                                /* sets colour, font changes spacing and design for the top text */
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: 5px solid rgba(204, 51, 255, 0.35);
+    backdrop-filter: blur(6px);
+    background: rgba(162, 0, 255, 0.25);
+}
+
+.featured { font-size: 5rem; margin-bottom: 20px;}
+.find { font-size: 2rem; }
+
+/* FIX: Responsive Text for Page 3 */
+@media (max-width: 768px) {
+    .featured { font-size: 2.5rem; border-width: 3px;} /* makes the top texts fit for mobile view */
+    .find { font-size: 1.2rem; border-width: 3px; }
+}
+
+.product-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;                                                          /* creates the grid spacing for individual items  */
+    display: grid;                                                          
+    gap: 2rem;                                                              /* spacing between individual grid item  */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));             /* fit 4-5 column if screen is big, but if small fit 1-2, but minimum width is 250px  */
+}
+
+.product-card {
+    background-color: rgba(167, 18, 236, 0.85);
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);                            
+    overflow: hidden;
+    transition: 0.3s;
+}
+.product-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.22); }
+
+.product-image-container { aspect-ratio: 1 / 1; overflow: hidden; margin: 0; } /* perfectly square area for image  */
+.product-image {
+    width: 100%; height: 100%; object-fit: cover; /* image fills the image container  */
+    border-bottom: 3px solid rgba(162, 0, 255, 0.5);
+    transition: transform 0.3s ease;
+}
+.product-card:hover .product-image { transform: scale(1.05); }
+
+.product-info { padding: 1rem; text-align: center; }
+.product-title { font-size: 1.1rem; font-weight: 600; color: #ff5bfa; margin-bottom: 0.5rem; } /* positioning, colour and size of info price and name  */
+.product-price { font-size: 1.8rem; font-weight: 700; color: #ff67ff; margin-bottom: 1rem; }
+
+.product-button {
+    width: 100%; padding: 10px;
+    background: #7d1fff;
+    color: black;
+    border: none;                               /* creates the button below the name to be rounded and change the cursor to a pointer when hovering, edits size as well  */
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+.product-button:hover { background: #5b0ccc; }
+
+/* =========================================
+   7. PAGE 4: BOOKING / SEATS
+   ========================================= */
+:root {
+  --seat-size: 44px;
+  --gap: 10px;
+  --available: #28a745;     /* categorize chair icons  */
+  --booked: #6c757d;
+  --selected: #ffc107;
+}
+
+/* Page 4 specific Booking Form */
+.booking-section {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;                              /* spacing between individual grid item  */
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.booking-title {
+    color: #cf5fff;
+    margin-bottom: 15px;
+    text-align: center;
+    font-family: 'Jost', sans-serif;
+    font-size: 1.5rem;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-group label { color: #d54aff; font-size: 14px; }
+
+.input-group input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #cb47ff;
+    background: #f34dff1a;
+    color: #ff23f4; /* pink colour for inputted text  */
+    font-family: 'jost', sans-serif;
+    outline: none;
+}
+.input-group input:focus { border-color: #0ea5e9; } /* change colour of border when clicking on it  */
+
+#confirm-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 15px;
+    font-size: 16px;
+    background: #990ee9;
+    border: none;
+    border-radius: 8px;
+    color: rgb(203, 106, 255);
+    font-weight: bolder;
+    cursor: pointer;
+    opacity: 0.5;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+#confirm-btn.active {
+    opacity: 1;
+    pointer-events: all;
+    background: #a200ff;
+    color: white;
+}
+#confirm-btn.active:hover { background: #ff7bf8; }
+
+/* Seating Chart Styles */
+.stage {
+  background: linear-gradient(90deg,#ffd2fe,#f19ffc);
+  color: #111;
+  padding: 14px;
+  border-radius: 10px;                                          /* sizingand colouring of stage area  */
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 14px 0;
+}
+
+.counter {
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+}
+
+.chart {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(var(--seat-size), 1fr));
+  gap: var(--gap);
+  margin-top: 18px;
+  justify-items: center;
+  overflow-x: auto; /* Handles overflow on small screens */
+  padding-bottom: 10px;
+}
+
+.seat {
+  width: var(--seat-size);
+  height: var(--seat-size);
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;                                                                  /* events upon interactin with the seats  */
+  user-select: none;
+  position: relative;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.35) inset, 0 6px 12px rgba(2,6,23,0.6);
+  transition: transform .12s ease, box-shadow .12s ease, filter .08s linear;
+  font-weight: 600;
+  color: #041024;
+  font-size: 12px;
+  border: none;
+}
+
+.seat:hover { transform: translateY(-6px); box-shadow: 0 10px 18px rgba(2,6,23,0.6); }
+
+.seat.booked { background: var(--booked); color: #fff; cursor: not-allowed; opacity: 0.95; }
+.seat.available { background: var(--available); color: #fff; }
+.seat.selected { background: var(--selected); color: #081316; }
+
+.legend {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.legend .item { display: flex; gap: 8px; align-items: center; font-size: 13px; }
+
+.swatch { width: 18px; height: 18px; border-radius: 4px; display: inline-block; }
+.swatch.available { background: var(--available); }
+.swatch.booked { background: var(--booked); }
+.swatch.selected { background: var(--selected); }
+
+.tooltip {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(var(--seat-size) + 8px);
+  padding: 6px 10px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .12s;
+  z-index: 100;
+}
+.seat:hover .tooltip { opacity: 1; }
+
+@media (max-width: 700px) {
+  :root { --seat-size: 30px; }
+  .chart { grid-template-columns: repeat(8, minmax(var(--seat-size), 1fr)); }
+}

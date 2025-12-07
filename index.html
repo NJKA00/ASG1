@@ -1,13 +1,106 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index.html</title>
     
-    <body>
-        <header>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Jost:ital,wght@1,500&family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
-            <h1></h1>
-        </header>
-    <h2></h2>
-    </body>
-    <footer>
-    <h3></h3>
-    </footer>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head> 
+
+<body class="page1-bg">
+
+    <!-- Rain Effect from JS -->
+    <div id="rain-container"></div>
+    <script src="rain.js"></script>
+
+    <!-- HEADER: groups all content in the topbar via class "topbar" -->
+    <header class="topbar">
+        <a href="index.html"> <!--ref to first index-->
+            <img src="Photos/tuyulogo.png" alt="TUYU Logo" class="logo">
+        </a>
+
+        <h1 class="headline">TUYU LIVE 2025</h1>
+
+        <!-- Edits layout of dropdown content on top right side of all screens  -->
+        <nav class="dropdown-container">
+            <div class="dropdown">
+                <img src="Photos/Dropdown.png" class="scissor" alt="Menu">
+                <div class="dropdown-content">
+                    <a href="index2.html">About TUYU</a> <!-- href in dropdown directs to other respective HTML's when clicked  -->
+                    <a href="index3.html">Goods</a>
+                    <a href="index4.html">Tickets</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+   
+    <main class="double-tracklist-section"> <!-- Groups the content from both parts of the tracklists together, in the case where both needs to be edited together  -->
+        <h2 class="tracklist-title">Track List</h2>
+        
+        
+        <div class="tracklist-wrapper"> <!-- wrapper to put the translucent border around the two tracks  -->
+            
+            
+            <table class="tracklist-table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>Album</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>It's raining after all</td><td><img src="Photos/IRAA_album.jpeg" alt="Song 1" class="track-cover"></td></tr>
+                    <tr><td>2</td><td>Goodbye to rock you</td><td><img src="Photos/gtry.jpg" alt="Song 1" class="track-cover"></td></tr>
+                    <tr><td>3</td><td>Compared Child</td><td><img src="Photos/cc.jpg" alt="Song 1" class="track-cover"></td></tr>
+                    <tr><td>4</td><td>I'm getting on the bus to the other world, see ya!</td><td><img src="Photos/bus.jpeg" alt="Song 1" class="track-cover"></td></tr>
+                    <tr><td>5</td><td>Under the summer breeze</td><td><img src="Photos/utsb.webp" alt="Song 1" class="track-cover"></td></tr>
+                    <tr><td>6</td><td>Trapped in the past</td><td><img src="Photos/titp.jpeg" alt="Song 1" class="track-cover"></td></tr>
+                    <tr><td>7</td><td>Overcast Skies</td><td><img src="Photos/os.jpeg" alt="Song 1" class="track-cover"></td></tr>
+                    <tr><td>8</td><td>Loser Girl</td><td><img src="Photos/lg.jpeg" alt="Song 1" class="track-cover"></td></tr>
+                    <tr><td>9</td><td>Hide and seek alone</td><td><img src="Photos/hnsa.jpeg" alt="Song 1" class="track-cover"></td></tr>
+                    <tr><td>10</td><td>Dämonisch</td><td><img src="Photos/Dämonisch.webp" alt="Song 1" class="track-cover"></td></tr>
+                </tbody>
+            </table>
+
+            <!-- Right Tracklist -->
+            <table class="tracklist-table"> <!-- Class seperation for individual tweaks  -->
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Title</th>
+                        <th>Album</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>11</td><td>What if this isn't a slave?</td><td><img src="Photos/witias.jpg" alt="Song 1" class="track-cover"></td></tr>
+                    <tr><td>12</td><td>If there was an endpoint</td><td><img src="Photos/itwae.jpg" alt="Song 1" class="track-cover"></td></tr>
+                    <tr><td>13</td><td>Under Kids</td><td><img src="Photos/uk.jpeg" alt="Song 1" class="track-cover"></td></tr>
+                    <tr><td>14</td><td>Under Heroine</td><td><img src="Photos/uh.jpeg" alt="Song 1" class="track-cover"></td></tr>
+                    <tr><td>15</td><td>Would be nice if you grew up one day</td><td><img src="Photos/iniygod.jpg" alt="Song 1" class="track-cover"></td></tr>
+                    <tr><td>16</td><td>What sort of ending are you wishing for?</td><td><img src="Photos/wsoeaywf.jpeg" alt="Song 1" class="track-cover"></td></tr>
+                    <tr><td>17</td><td>Revolutionary Front</td><td><img src="Photos/rf.jpeg" alt="Song 1" class="track-cover"></td></tr>
+                    <tr><td>18</td><td>Faithful dog "Hachi"</td><td><img src="Photos/fdh.jpeg" alt="Song 1" class="track-cover"></td></tr>
+                    <tr><td>19</td><td>Autumn rain front</td><td><img src="Photos/arf.jpg" alt="Song 1" class="track-cover"></td></tr>
+                    <tr><td>20</td><td>It's raining nevertheless</td><td><img src="Photos/irn.jpg" alt="Song 1" class="track-cover"></td></tr>
+                </tbody>
+            </table>
+
+        </div>
+    </main>
+
+    
+    <footer style="text-align: center;"> <!-- Aligns the Book now button to middle of screen for both devices  -->
+        <a href="index4.html" class="btn">Book now!</a>
+    </footer>    
+
+</body>
 </html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Jost:wght@500;700&family=Poppins:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Link to css -->
+    <link rel="stylesheet" href="style.css"> 
+    <title>index2.html</title>
+</head>
+
+<body class="page2-bg">
+    <!-- Rain Effect Container -->
+    <div id="rain-container"></div>
+
+    <!-- Header -->
+    <header class="topbar">
+        <a href="index.html">
+            <img src="Photos/TUYUlogo.png" alt="TUYU Logo" class="logo">
+        </a>
+
+        <h1 class="headline">TUYU LIVE 2025</h1>
+
+        <nav class="dropdown-container">
+            <div class="dropdown">
+                <img src="Photos/Dropdown.png" class="scissor" alt="Menu">
+                <div class="dropdown-content">
+                    <a href="index2.html">About TUYU</a>
+                    <a href="index3.html">Goods</a>
+                    <a href="index4.html">Tickets</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main>
+        <div class="hero">
+            <img src="Photos/fbg2.jpg" alt="TUYU Live 2025 Illustration">
+        </div>
+
+        <!-- Intro Text -->
+        <section class="introtop"> <!-- groups the whole introductory portion of group in one group -->
+            <div class="intro-text">
+                <h1>About TUYU</h1>
+                <p>TUYU is a Japanese music unit formed in 2019, mastering the blend of emotional vocals, sharp songwriting, and polished digital production. <br><br> Originally consisting of vocalist <b>Rei</b>, composer <b>miro</b>, and guitarist <b>Pusu</b>, their sound fuses J-pop rock with anime-influenced melodies and modern Vocaloid-style production. Their music feels dramatic, expressive, and deeply relatable to the "Under Kids" generation.</p>
+            </div>
+            <div class="intro-image">
+                <img src="Photos/TUYUlogo.png" alt="TUYU Umbrella">
+            </div>
+        </section> 
+
+        <article class="bestsong">
+            <h2>Best Tuyu songs</h2>
+
+        </article> <!-- Groups the cd portion of the page into one group as an article group  -->
+
+        <!-- Disc Albums -->
+        <div class="albums-wrapper">
+            <div class="discontainer">
+
+                <div class="album album1">
+                    <p class="album-text top-text">It's Raining After All</p> <!-- class to edit font, colour and positioning in css  -->
+                    <div class="card">                                        <!-- class to edit size and image of the album cover -->
+                        <img src="Photos/artistpic.jpeg" alt="Album 1 Cover"> 
+                    </div>
+                    <div class="outer"> <!-- Differentiate the outer and inner parts of the disc -->
+                        <div class="inner">
+                            <img src="Photos/IRAA_album.jpeg" alt="Disc Label 1">
+                        </div>
+                    </div>
+                    <p class="album-text bottom-text">Released on 02/19/20 - 16M views</p>
+                </div>
+
+                <div class="album album2">
+                    <p class="album-text top-text">Under Kids</p>
+                    <div class="card">
+                        <img src="Photos/album2cover.jpg" alt="Album 2 Cover">
+                    </div>
+                    <div class="outer">
+                        <div class="inner">
+                            <img src="Photos/uk.jpeg" alt="Disc Label 2">
+                        </div>
+                    </div>
+                    <p class="album-text bottom-text">Released on 07/27/22 - 22M views</p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <!-- Footer with Carousel -->
+    <footer>
+        <p class="ytrefer">Check out more from Tuyu!</p>
+        <div class="carousel-container">
+            <button class="carousel-btn prev-btn" aria-label="Previous Slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="carousel-track-container">
+                <ul class="carousel-track">
+                    <li class="carousel-slide current-slide">
+                        <div class="video-responsive">
+                            <iframe id="player0" src="https://www.youtube.com/embed/olWvy0PiLfA?rel=0&enablejsapi=1" allowfullscreen></iframe>
+                        </div>
+                    </li>
+                    <li class="carousel-slide">
+                        <div class="video-responsive">
+                            <iframe id="player1" src="https://www.youtube.com/embed/M7FH1dL51oU?rel=0&enablejsapi=1" allowfullscreen></iframe>
+                        </div>
+                    </li>
+                    <li class="carousel-slide">
+                        <div class="video-responsive">
+                            <iframe id="player2" src="https://www.youtube.com/embed/4QXCPuwBz2E?rel=0&enablejsapi=1" allowfullscreen></iframe>
+                        </div>
+                    </li>
+                    <li class="carousel-slide">
+                        <div class="video-responsive">
+                            <iframe id="player3" src="https://www.youtube.com/embed/1cGQotpn8r4?rel=0&enablejsapi=1" allowfullscreen></iframe>
+                        </div>
+                    </li>
+                    <li class="carousel-slide">
+                        <div class="video-responsive">
+                            <iframe id="player4" src="https://www.youtube.com/embed/lGFEqEFJ410?rel=0&enablejsapi=1" allowfullscreen></iframe>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="carousel-btn next-btn" aria-label="Next Slide"> <!-- left and right buttons for carousel -->
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <div class="carousel-nav">  <!-- 5 buttons below carousel -->
+                <button class="carousel-indicator current-slide"></button>
+                <button class="carousel-indicator"></button>
+                <button class="carousel-indicator"></button>
+                <button class="carousel-indicator"></button>
+                <button class="carousel-indicator"></button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Link -->
+    <script src="carousel.js"></script>
+</body>
+</html>

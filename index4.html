@@ -1,0 +1,71 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Jost:ital,wght@1,500&family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>index4.html</title>
+        <link rel="stylesheet" href="style.css">
+        </head>
+<body>
+    <header class="topbar">
+            <a href="index.html">
+            <img src="Photos/TUYUlogo.png" alt="TUYU Logo" class="logo" >
+            </a>
+
+            <h1 class="headline">TUYU LIVE 2025</h1>
+
+            <div class="dropdown-container">
+                
+                <!-- shrink-wrapped hover container -->
+                <div class="dropdown">
+                    <img src="Photos/Dropdown.png" class="scissor" alt="umbrella">
+
+                    <div class="dropdown-content">
+                        <a href="index2.html">About TUYU</a>
+                        <a href="index3.html">Goods</a>
+                        <a href="index4.html">Tickets</a>
+                    </div>
+                </div>
+            </div>
+    </header>
+    <div class="stage">STAGE</div>
+
+    <div class="controls">
+        <div class="counter">Available seats: <strong id="available-count">2</strong></div>
+        <div class="counter">Selected: <strong id="selected-count">0</strong></div>
+        <button id="confirm-btn" disabled>Confirm Booking</button>
+        <div style="flex:1"></div>
+        
+    </div>
+
+    <div class="legend">
+        <div class="item"><span class="swatch available"></span>Available</div>
+        <div class="item"><span class="swatch booked"></span>Booked</div>
+        <div class="item"><span class="swatch selected"></span>Selected</div>
+    </div>
+
+    <div id="chart" class="chart" ></div>
+    <section class="booking-section">
+            <h2 class="booking-title">Complete your Booking</h2>
+            
+            <form id="booking-form">
+                <div class="input-group">
+                    <label for="user-name">Full Name</label>
+                    <input type="text" id="user-name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="user-email">Email Address</label>
+                    <input type="email" id="user-email" placeholder="name@example.com" required>
+                </div>
+
+                
+            </form>
+        </section>
+
+    <script src="seats.js"></script>
+</body>
+    </html>
